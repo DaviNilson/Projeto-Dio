@@ -1,0 +1,123 @@
+//Nome:Davi Nilson Lins Mariano
+//Matricula: U21106305
+//Curso: Ciências da computação
+//Um cinema de Brasília está interessado em descobrir o perfil das pessoas que frequentam suas sessões de filmes
+// para isso, necessita realizar algumas verificações nas informações prestadas.
+
+#include<stdio.h> //Biblioteca para o funcionamento dos códigos ex: "main()"; printf() ou scanf()
+#include<stdlib.h> //Biblioteca para a limpeza de tela do usuário 
+#include<locale.h> //vai garantir que caracteres como “ç” e acentuação sejam exibidos normalmente no programa.
+#include<string.h>// biblioteca para ler strings, strlen e strcmp: http://linguagemc.com.br/a-biblioteca-string-h/
+#include<ctype.h> // Biblioteca para verificar se um caracter numérico, minusculo ou maiúsculo.
+
+int main(){  // Inicio do algoritimo 
+int quantSessoes; //Declarando variáveis de tipo inteiro
+int quantPessoas, i, idade, maiorDeIdadeHomem=0, mf=0, adulto=0, crianca=0, adolescente=0, idoso=0,m=0,f=0; //Para alocar numeros inteiro
+char nomeFilme[30], sexo, pipoca; // Para alocar um caractér na variáve
+
+do{ // Funçao para fazer tudo que está entre couchetes
+	printf("Informe a quantidade de sessoes (2) : "); //Vai printar na tela o entre áspas
+	scanf("%d", &quantSessoes); // Vai alocar o dado da variável no endereço "%d".
+	fflush(stdin); // Limpar ou descarregaros buffers de saida de um fluxo de dados.
+	if(quantSessoes !=2) // É um caso que 'se' X não for executado corretamente,irá executar outra tarefa
+		printf("Quantida de sessoes invalidas\n"); // Essa será executada caso meu primeiro printf não for executado da forma certa
+
+}while (quantSessoes != 2); //Função enquanto, estrutura de repetição. Que enquanto minha função 'do' não for executada, ela vai repetir até a "resposta" certa
+
+do{
+	printf("\nFilmes disponiveis : \n");
+	printf("\n --------Harry Potter 4--------\n");
+	printf("\n--------Jurassic World--------\n");
+	printf("\n--------Em busca da felicidade--------\n");
+	printf("\nInforme o nome do filme: ");
+	fgets(nomeFilme, 30, stdin); // Ela poder fazer a leitura a partir de um arquivo de dados e incluir o caracter de nova linha na string.
+	fflush(stdin);
+	if(strlen(nomeFilme) <=0){ //Ela retorna um inteiro que é o comprimento do string
+		printf("O nome do filme deve conter pelo menos 1 caracter\n");
+	}
+	
+}while (strlen(nomeFilme) <=0); //Enquanto a resposta conter 1 ou mais caractér 
+
+do{ 
+	printf("Informe o numero de pessoas que assistiram o filme: ");
+	scanf("%d", &quantPessoas);// Vai alocar dados na variável 'quantPessoas'
+	if(quantPessoas<=2){ // Se quantidade de pessoas for menor que 10 então :
+		printf ("Quantidade de pessoas invalidas\n"); // O progama vai printar na tela o entre áspas
+}
+	
+}
+while(quantPessoas<=2); // Enquanto a quantidade de pessoas não for maior que 10 ele vai repetir todo o 'do' 
+
+  for(i=0;i<quantPessoas;i++) { //'FOR' É uma estrutura contadora que vai repetir meu contador dependendo da quantidade solicitada dentro da execução do algoritimo
+	do{
+	  	printf("Informe sua idade: ");
+		scanf("%d", &idade); // Vai alocar um dados na variável 'idade'
+		if(idade <3 || idade >100)// Se idade menos que 3 e idade maior que 100, está errado
+		 	printf("Idade invalida\n"); // Printar na  tela que a resposta do usuário esta errada.
+		 	
+	 }while (idade <3 || idade >100);// Estrutura de repetição para se o usuário não der a informação certa, ele vai repetir o requerido.
+	 for(i=0;i<quantPessoas;i++) { //'FOR' É uma estrutura contadora que vai repetir meu contador dependendo da quantidade solicitada dentro da execução do algoritimo
+	do{
+	  	  printf("--Mini Mercado");
+		  printf("---PIPOCAS----");
+		scanf("%c", &pipoca); 
+		if(pipoca != 'g' && pipoca !='G' && pipoca != 'm' && pipoca !='M')
+		 	printf("Use somente (G,g e M,m) para as pipocas"); 
+		 	
+	 }while (pipoca = 'G' && pipoca = 'g' || pipoca ='M' && pipoca = 'm');
+}
+ 	do{
+		printf("Informe seu sexo como feminino (f) ou masculino(m) \n");
+		fflush(stdin); 
+		scanf("%c", &sexo);// Alocar dados á variavel 'sexo'
+		sexo=tolower(sexo);// Converte todo caracter em minúsculo
+		if(sexo != 'm' && sexo != 'f') { // Se 'sexo' for diferente da letra 'm' ou 'f' então:
+			printf("sexo invalido\n"); // O progama printará o entre áspas
+		}
+	}while (sexo != 'm' && sexo != 'f'); // Enquanto meu 'sexo' não for igual o requerido
+	  
+	 
+	 if(idade>=3 && idade<= 13) // Se idade maior ou igual a 3 e idade menor ou igual a 13 então;
+	 	crianca++; //Ele vai contar 'crianca'
+	 
+	 if(idade >=14 && idade <=17)// ''   ''    ''    ''    14 ''    ''     ''    ''    17 então;
+	 	adolescente++;// ''  ''  ''  'adolescente'
+	 
+	 if(idade >=18 && idade <=64)// ''   ''    ''    ''    18 ''    ''     ''    ''    64 então;
+	 	adulto++;// '' '' '' 'adulto'
+	 
+	 if(idade >=65 && idade <=100)// ''  ''    ''    ''    65 ''    ''     ''    '''   100 então;
+	 	idoso++;// '' '' '' 'idoso'
+
+	 if(sexo =='m' && idade >=18){ // Se o sexo for 'homem' e idade maior ou igual a 18 então;
+	 	maiorDeIdadeHomem++; // Ele vai contar como "homens maiores de idade"
+	 }
+	 
+	 if (sexo=='m'){// Se o sexo for 'homem' então;
+	    m++; // Vai contar somente "homem"
+	}
+	 if(sexo == 'f' && idade >= 18){// Se o sexo '' 'feminino' ''    ''    ''    ''     emtão;
+		 mf++;// Ele vai contar "mulheres maiores de idade"
+	}
+	
+	if (sexo == 'f'){// Se o sexo for 'feminino' então;
+		f++; // Ele vai contar somente "mulher"
+	}
+}
+system("cls"); //Limpeza de tela do usurário
+
+	printf(" Nome do filme = %s\n", nomeFilme);// Printar na tela o dado alocada no meu porcentagem, na variável requerida, e assim em todas       
+	printf("Quantidade de mulheres que assistiram ao filme: %d\n",f);
+	printf("Quantidade de homens que assistiram ao filme: %d\n", m );
+	printf("Quantidade de criancas que assistiram o filme : %d\n", crianca);
+	printf("Quantidade de adolescentes que assistiram ao filme: %d\n", adolescente);
+	printf("Quantidade de adultos que assistiram ao filme: %d\n", adulto);
+	printf("Quantidade de idosos que assistiram ao filme: %d\n", idoso);
+	
+	printf("Quantidade de mulheres maiores de idade: %d \n", mf);
+	printf("Quantidade de homens maiores de idade: %d \n", maiorDeIdadeHomem);
+	
+	printf("Professora, quero meu 10 hein rs");
+
+return 0; // Retornar para função main
+}
